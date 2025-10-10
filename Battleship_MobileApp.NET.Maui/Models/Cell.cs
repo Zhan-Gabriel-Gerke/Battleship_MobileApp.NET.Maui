@@ -6,12 +6,27 @@ namespace Battleship_MobileApp.NET.Maui.Models;
 
 public class Cell : INotifyPropertyChanged
 {
+    private string _shipId;
     private CellState _state;
     private bool _isRevealed = false;
  
     public event PropertyChangedEventHandler PropertyChanged;
     public int X { get; }
     public int Y { get; }
+
+    public string ShipId
+    {
+        get => _shipId;
+        set
+        {
+            if (_shipId != value)
+            {
+                _shipId = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+    
     //Property which allows to check the real state
     public CellState State
     {

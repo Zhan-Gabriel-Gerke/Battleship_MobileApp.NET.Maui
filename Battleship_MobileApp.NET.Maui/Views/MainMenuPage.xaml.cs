@@ -1,15 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Battleship_MobileApp.NET.Maui.ViewModels;
 
 namespace Battleship_MobileApp.NET.Maui.Views;
 
 public partial class MainMenuPage : ContentPage
 {
-    public MainMenuPage()
+    public MainMenuPage(MainMenuViewModel viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
+        BuildUI();
+    }
+
+    private void BuildUI()
+    {
+        var startGameButton = new Button()
+        {
+            Text = "Start Game",
+            FontSize = 24,
+            HorizontalOptions = LayoutOptions.Center,
+            VerticalOptions = LayoutOptions.Center
+        };
+        
+        startGameButton.SetBinding(Button.CommandProperty, nameof(MainMenuViewModel.StartGameCommand));
+        
+        this.Content = startGameButton;
     }
 }
