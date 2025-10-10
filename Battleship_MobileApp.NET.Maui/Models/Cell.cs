@@ -7,12 +7,12 @@ namespace Battleship_MobileApp.NET.Maui.Models;
 public class Cell : INotifyPropertyChanged
 {
     private CellState _state;
-    private bool _isRevealed = false; // field for Opponent (to hide ships)
+    private bool _isRevealed = false;
  
     public event PropertyChangedEventHandler PropertyChanged;
     public int X { get; }
     public int Y { get; }
-
+    //Property which allows to check the real state
     public CellState State
     {
         get => _state;
@@ -60,6 +60,6 @@ public class Cell : INotifyPropertyChanged
     
     protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));//inform UI about changes
     }
 }

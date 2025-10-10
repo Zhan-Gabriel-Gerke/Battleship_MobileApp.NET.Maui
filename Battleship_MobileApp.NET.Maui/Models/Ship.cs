@@ -8,6 +8,7 @@ public class Ship : INotifyPropertyChanged
     private int _hits;
     public int Size { get; }
     public event PropertyChangedEventHandler PropertyChanged;
+    
     public int Hits
     {
         get => _hits;
